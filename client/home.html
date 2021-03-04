@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,84 +10,135 @@
   <style>
     @import "~@creativebulma/bulma-divider";
 
+    .separator {
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+
+    .separator::before,
+    .separator::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #000;
+    }
+
+    .separator:not(:empty)::before {
+      margin-right: .25em;
+    }
+
+    .separator:not(:empty)::after {
+      margin-left: .25em;
+    }
   </style>
   <title>YTR</title>
 </head>
+
 <body>
   <!-- ------------------------------ NAV SECTION ------------------------------ -->
   <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation"
-  style="box-shadow: 0 4px 8px 0 rgba(71, 71, 71, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" ;>
-  <div class="navbar-brand">
-    <a class="navbar-item" href="#">
-      <img src="./assets/YTR.png" width="112" height="28">
-    </a>
+    style="box-shadow: 0 4px 8px 0 rgba(71, 71, 71, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" ;>
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">
+        <img src="./assets/YTR.png" width="112" height="28">
+      </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start" style="justify-content: flex-end; margin-right: 0; margin-left: auto;">
-      <a class="navbar-item">
-        <!-- <a href='#'><strong>ALL PLACES</strong></a> -->
-        <!-- <button class="button is-info is-rounded is-inverted"><strong>ALL PLACES</strong></button> -->
-        <div class="buttons">
-          <a class="button is-info is-rounded is-inverted">
-            <span class="icon is-small is-left">
-              <i class="fas fa-compass"></i>
-            </span>
-            <strong>All Destinations</strong>
-          </a>
-        </div>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </a>
     </div>
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-danger">
-            <span class="icon is-small is-left">
-              <i class="fas fa-sign-out-alt"></i>
-            </span>
-            <strong>Log Out</strong>
-          </a>
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start" style="justify-content: flex-end; margin-right: 0; margin-left: auto;">
+        <a class="navbar-item">
+          <!-- <a href='#'><strong>ALL PLACES</strong></a> -->
+          <!-- <button class="button is-info is-rounded is-inverted"><strong>ALL PLACES</strong></button> -->
+          <div class="buttons">
+            <a class="button is-info is-rounded is-inverted">
+              <span class="icon is-small is-left">
+                <i class="fas fa-compass"></i>
+              </span>
+              <strong>All Destinations</strong>
+            </a>
+          </div>
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-danger">
+              <span class="icon is-small is-left">
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+              <strong>Log Out</strong>
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- ---------------------- THIS IS THE CONTENT ---------------------------------------------------- -->
-<section class="section" style="margin: 9vh 0;padding: 10px;">
-  <h1 class="title">Section</h1>
-  <h2 class="subtitle">
-    A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
-  </h2>
-</section>
-<!-- <div class="container max-width" style="margin: 0; padding: 0; width: 100vw; max-width: 1425px;">
-  <div class="notification" style="background: linear-gradient(to right, #5284ee, #124abf);text-align: center;">
-    <p style="color: #fff;font-size: 20px;">Welcome back <strong style="color: #fff">User!</strong> How are you today?</p>
-  </div>
-</div> -->
+  <!-- ---------------------- THIS IS THE CONTENT ---------------------------------------------------- -->
+  <section class="section" style="margin-top: 11vh;padding: 10px;margin-bottom: 4vh; text-align: center;">
+    <h1 class="title">Welcome!</h1>
+    <h2 class="subtitle">
+      Would you like to try our <strong>Recommendation</strong> below?
+    </h2>
+  </section>
 
-<!-- ---------------------- THIS IS THE CONTENT ---------------------------------------------------- -->
-
-
-
-<div class="container page-container">
-  <div class="columns">
-    <div class="column">Column 1</div>
-    <div class="is-divider-vertical" data-content="OR"></div>
-    <div class="column">
-      Column 2 <br/>
-      Note: divider stretches to parent's height.
+  <div class="columns" style="display: flex;margin: 20px;">
+    <div class="column is-half" style="padding-right: 6vw;padding-left: 6vw;">
+      <div class="box" style="height: 40vh;margin: 0;padding: 0;overflow: clip;">
+        <figure>
+          <img src="./assets/raja.jpg" style='overflow: hidden;'>
+        </figure>
+      </div>
+    </div>
+    <div class="column"
+      style="display: flex;flex-direction: column;justify-content: center;align-content: center;align-items: center;padding: 0 5vw;">
+      <span style="font-size: 120px;display: flex;align-content: center;justify-content: center; text-align: center;">
+        🦊
+      </span>
+      <strong style="font-size: 21px;">Welcome to HackToDo!</strong>
+      <p style="text-align: center;">
+        This is a simple to do app with *insert 3rd party API here* to help you maage your day and improve your
+        productivity throughout the day
+      </p>
     </div>
   </div>
+
+
+  <!-- ---------------------- THIS IS THE CONTENT ---------------------------------------------------- -->
+
+
+  <div class="separator" style="padding: 0 10vw;">Anak Senjah Quotes</div>
+
+  <!-- ---------------------- THIS IS THE CONTENT ---------------------------------------------------- -->
+
+  <section class="section" style="margin-top: 3vh;padding: 10px;margin-bottom: 4vh; text-align: center;">
+    <h2 class="subtitle">
+      Need to check <strong>the weather</strong> or <strong>some places</strong>?
+    </h2>
+  </section>
+
+  <div class="columns" style="display: flex;margin: 20px;">
+    <div class="column is-half" style="padding-right: 6vw;padding-left: 6vw;">
+      <div class="box" style="height: 40vh;">
+        Weather
+      </div>
+    </div>
+    <div class="column"
+      style="display: flex;flex-direction: column;justify-content: center;align-content: center;align-items: center;padding: 0 5vw;">
+      <div class="box" style="height: 40vh;width: 40vw; margin:0; padding: 0;">
+        Google Maps
+      </div>
+    </div>
   </div>
 
-<script src="https://www.jsdelivr.com/package/npm/@creativebulma/bulma-divider"></script>
+  <script src="https://www.jsdelivr.com/package/npm/@creativebulma/bulma-divider"></script>
 </body>
+
 </html>
