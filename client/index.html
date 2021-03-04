@@ -102,40 +102,45 @@
                 <button>Register</button>
               </div>
               <div class="wrapper">
-                <form id="login" tabindex="500">
+                <!-- ------------------- FORM LOGIN ------------------- -->
+                <form id="login-form" tabindex="500">
                   <h3
                     style="font-size: 60px;display: flex;align-content: center;justify-content: center; text-align: center;">
                     🤗</h3>
                   <h3>Login</h3>
                   <div class="mail">
-                    <input type="mail" name="">
+                    <input id="login-email" type="email" name="email" placeholder="e.g: mail@mail.com">
                     <label>Mail</label>
                   </div>
                   <div class="passwd">
-                    <input type="password" name="">
+                    <input id="login-password" type="password" name="password" placeholder="e.g: Your secret password here">
                     <label>Password</label>
                   </div>
                   <div class="submit">
-                    <button class="dark">Login</button>
+                    <button type="submit" class="dark">Login</button>
                   </div>
                 </form>
-                <form id="register" tabindex="502">
+                <!-- ------------------- FORM LOGIN ------------------- -->
+
+                <!-- ------------------- FORM REGISTER ------------------- -->
+                <form id="register-form" tabindex="502">
                   <h3
                     style="font-size: 60px;display: flex;align-content: center;justify-content: center; text-align: center;">
                     🥳</h3>
                   <h3>Register</h3>
                   <div class="mail">
-                    <input type="mail" name="">
+                    <input id="regis-email" type="email" name="email" placeholder="e.g: mail@mail.com">
                     <label>Mail</label>
                   </div>
                   <div class="passwd">
-                    <input type="password" name="">
+                    <input id="regis-password" type="password" name="password" placeholder="e.g: Your secret password here">
                     <label>Password</label>
                   </div>
                   <div class="submit">
-                    <button class="dark">Register</button>
+                    <button type="submit" class="dark">Register</button>
                   </div>
                 </form>
+                <!-- ------------------- FORM REGISTER ------------------- -->
               </div>
             </div>
           </div>
@@ -178,7 +183,7 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-danger">
+            <a class="button is-danger" id="logout-btn">
               <span class="icon is-small is-left">
                 <i class="fas fa-sign-out-alt"></i>
               </span>
@@ -409,6 +414,7 @@
         });
       });
     </script>
+    <script src="main.js"></script>
 </body>
 
 </html>
