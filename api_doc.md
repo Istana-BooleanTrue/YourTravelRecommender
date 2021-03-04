@@ -28,15 +28,14 @@ ENDPOINT:
 1. `POST /login`
 2. `POST /register`
 3. `GET /destination`
-4. `GET /weather`
+4. `GET /destination/one`
+5. `GET /weather`
 
 Flow:
 
 -   login / register
 -   user ngeliat location recommendationnya plus semua 3rd api
 -   user juga bisa ngeliat all location (10 lokasi di indonesia)
-
-\\\ API => denny dilempar langsung ke HTML dan naufal
 
 ## 1. `POST /login`
 
@@ -173,7 +172,54 @@ Response (500 - internal server error) =
 }
 ```
 
-## 4. GET /weather`
+## 4. GET /destination/one
+
+Description =
+
+User can get one destination randomly
+
+Request =
+
+-   headers =
+
+    {
+    "access_token": "<access token>"
+    }
+
+-   body =
+
+    not needed
+
+Response (200 - OK) =
+
+```json
+{
+    "id": "<given id by system>",
+    "title": "<destination title>",
+    "description": "<destination description>",
+    "imgURL": "<image URL>",
+    "createdAt": "<date by system>",
+    "updatedAt": "<date by system>"
+}
+```
+
+Response (404 - NOT FOUND) =
+
+```json
+{
+    "message": "<Not Found message>"
+}
+```
+
+Response (500 - internal server error) =
+
+```json
+{
+    "message": "<internal server error message>"
+}
+```
+
+## 5. GET /weather`
 
 Description =
 
