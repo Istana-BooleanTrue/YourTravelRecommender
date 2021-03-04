@@ -11,6 +11,7 @@ router.post('/register', UserController.register);
 
 router.use(authenticate);
 
+router.get('/weather', DestController.getWeather)
 router.get('/destination', DestController.showAll);
 router.get('/destination/one', DestController.showOne);
 

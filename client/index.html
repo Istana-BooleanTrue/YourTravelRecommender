@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <title>Your Travel Recommender</title>
+  <style>
+    @import "~@creativebulma/bulma-divider";
+
+    .site-link {
+      padding: 5px 15px;
+      position: fixed;
+      z-index: 99999;
+      background: #fff;
+      box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
+      right: 30px;
+      bottom: 30px;
+      border-radius: 10px;
+    }
+
+    .site-link img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .separator {
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+
+    .separator::before,
+    .separator::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #000;
+    }
+
+    .separator:not(:empty)::before {
+      margin-right: .25em;
+    }
+
+    .separator:not(:empty)::after {
+      margin-left: .25em;
+    }
+
+    #main-columns>#child-columns {
+      flex: 1 1 20%;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- --------------------------------------------- LOGIN REGISTER --------------------------------------------- -->
+  <div id="login-page" style="width: 100vw; height: 100vh;">
+    <div class="container is-fluid" style="display: flex; justify-content: center; max-height: 19vh; height: 12vh;">
+      <figure style="height: 100px; padding: 15px 10px;">
+        <img src="./assets/YTR.png" style="height: 70px">
+      </figure>
+    </div>
+
+    <br>
+    <div class="columns" style="margin: 0;padding: 0;width: 100vw;">
+      <div class="column is-four-fifths"
+        style="width: 30vw; margin-left: 5vw;display: flex;flex-direction: column;justify-content: center;align-items: center;">
+        <div class="box" style="width: 43vw; height: 80vh; margin-left: 20vw; overflow: clip; padding: 0">
+          <figure>
+            <img src="./assets/raja.jpg" style='overflow: hidden; opacity: 0.5'>
+            <div class="box"
+              style="position: absolute; top: 55%; left: 26%; transform: translate(-50%, -50%); max-width: 20vw; display: flex; flex-direction: column; justify-content: center; align-content: center; align-items: center;">
+              <span
+                style="font-size: 120px;display: flex;align-content: center;justify-content: center; text-align: center;">
+                🌏
+              </span>
+              <strong style="font-size: 21px;">Welcome to YTR!</strong>
+              <p style="text-align: center;">
+                This website helps you by giving you recommendation of places you can visit in Indonesia! Enjoy your
+                trip!
+              </p>
+            </div>
+          </figure>
+        </div>
+      </div>
+      <!-- --------------------------------------------- LOGIN REGISTER --------------------------------------------- -->
+      <div class="column"
+        style="display: flex; flex-basis: 0; flex-grow: 1; flex-shrink: 1; padding: .75rem; justify-content: center; align-content: center; align-items: center; margin-left: 4vw; max-width: 55vw">
+        <div class="container" id="container"
+          style="position: relative; overflow: hidden; width: 768px; max-width: 100%; min-height: 480px; max-height: 70vh; box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); margin: 0; padding: 0; border-radius: 25px;">
+          <div class="body">
+            <div class="veen">
+              <div class="login-btn splits">
+                <p>Already user?</p>
+                <button class="active">Login</button>
+              </div>
+              <div class="rgstr-btn splits">
+                <p>Don't have an account?</p>
+                <button>Register</button>
+              </div>
+              <div class="wrapper">
+                <form id="login" tabindex="500">
+                  <h3
+                    style="font-size: 60px;display: flex;align-content: center;justify-content: center; text-align: center;">
+                    🤗</h3>
+                  <h3>Login</h3>
+                  <div class="mail">
+                    <input type="mail" name="">
+                    <label>Mail</label>
+                  </div>
+                  <div class="passwd">
+                    <input type="password" name="">
+                    <label>Password</label>
+                  </div>
+                  <div class="submit">
+                    <button class="dark">Login</button>
+                  </div>
+                </form>
+                <form id="register" tabindex="502">
+                  <h3
+                    style="font-size: 60px;display: flex;align-content: center;justify-content: center; text-align: center;">
+                    🥳</h3>
+                  <h3>Register</h3>
+                  <div class="mail">
+                    <input type="mail" name="">
+                    <label>Mail</label>
+                  </div>
+                  <div class="passwd">
+                    <input type="password" name="">
+                    <label>Password</label>
+                  </div>
+                  <div class="submit">
+                    <button class="dark">Register</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- --------------------------------------------- LOGIN REGISTER --------------------------------------------- -->
+
+  <nav id="navbar" class="navbar is-fixed-top" role="navigation" aria-label="main navigation"
+    style="box-shadow: 0 4px 8px 0 rgba(71, 71, 71, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" ;>
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">
+        <img src="./assets/YTR.png" width="112" height="28">
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start" style="justify-content: flex-end; margin-right: 0; margin-left: auto;">
+        <a class="navbar-item">
+          <!-- <a href='#'><strong>ALL PLACES</strong></a> -->
+          <!-- <button class="button is-info is-rounded is-inverted"><strong>ALL PLACES</strong></button> -->
+          <div class="buttons">
+            <a class="button is-info is-rounded is-inverted">
+              <span class="icon is-small is-left">
+                <i class="fas fa-compass"></i>
+              </span>
+              <strong>All Destinations</strong>
+            </a>
+          </div>
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-danger">
+              <span class="icon is-small is-left">
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+              <strong>Log Out</strong>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- ------------------------------------------------ NAV SECTION ------------------------------------------------ -->
+
+  <!-- ---------------------------------------------------- THIS IS THE CONTENT ---------------------------------------------------- -->
+  <div id="homepage">
+    <section class="section" style="margin-top: 11vh;padding: 10px;margin-bottom: 4vh; text-align: center;">
+      <h1 class="title">Welcome!</h1>
+      <h2 class="subtitle">
+        Would you like to try our <strong>Recommendation</strong> below?
+      </h2>
+    </section>
+
+    <div class="columns" style="display: flex;margin: 20px;">
+      <div class="column is-half" style="padding-right: 6vw;padding-left: 6vw;">
+        <div class="box" style="height: 40vh;margin: 0;padding: 0;overflow: clip;">
+          <figure>
+            <img src="./assets/raja.jpg" style='overflow: hidden;'>
+          </figure>
+        </div>
+      </div>
+      <div class="column"
+        style="display: flex;flex-direction: column;justify-content: center;align-content: center;align-items: center;padding: 0 5vw;">
+        <span style="font-size: 120px;display: flex;align-content: center;justify-content: center; text-align: center;">
+          🦊
+        </span>
+        <strong style="font-size: 21px;">Welcome to HackToDo!</strong>
+        <p style="text-align: center;">
+          This is a simple to do app with *insert 3rd party API here* to help you maage your day and improve your
+          productivity throughout the day
+        </p>
+      </div>
+    </div>
+
+
+    <!-- ---------------------- THIS IS THE CONTENT ---------------------------------------------------- -->
+
+
+    <div class="separator" style="padding: 0 10vw;">Anak Senjah Quotes</div>
+
+    <!-- ---------------------------------------------------- WEATHER AND MAP ---------------------------------------------------- -->
+
+    <section class="section" style="margin-top: 3vh;padding: 10px;margin-bottom: 4vh; text-align: center;">
+      <h2 class="subtitle">
+        Need to check <strong>the weather</strong> or <strong>some places</strong>?
+      </h2>
+    </section>
+
+    <div class="columns" style="display: flex;margin: 20px;">
+      <div class="column is-half" style="padding-right: 6vw;padding-left: 6vw;">
+        <div class="box" style="height: 40vh;">
+          Weather
+        </div>
+      </div>
+      <div class="column"
+        style="display: flex;flex-direction: column;justify-content: center;align-content: center;align-items: center;padding: 0 5vw;">
+        <div class="box" style="height: 40vh;width: 40vw; margin:0; padding: 0;">
+          Google Maps
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ---------------------------------------------------- WEATHER AND MAP ---------------------------------------------------- -->
+
+  <!-- ---------------------------------------------------- ALL DESTINATIONS ---------------------------------------------------- -->
+
+  <div id="all-destination">
+    <!-- PRODUCT DASHBOARD -->
+    <div class="column is-main-content">
+      <div class="container is-fluid block">
+        <section class="section" style="text-align: center;">
+        </section>
+      </div>
+
+
+      <!-- -------- PRODUCT CARDS -------- -->
+      <div class="container is-widescreen">
+        <!-- -------- PRODUCT CARDS -------- -->
+        <div id="main-columns" class="columns is-multiline">
+
+          <!-- -------- PRODUCT 1-------- -->
+          <div id="child-columns" class="column">
+            <div class="box" style="height: 45vh;width: 17vw;">
+              I'm in a box.
+            </div>
+          </div>
+          <!-- -------- PRODUCT 1 END -------- -->
+
+
+          <!-- -------- PRODUCT 2-------- -->
+          <div id="child-columns" class="column">
+            <div class="box" style="height: 45vh;width: 17vw;">
+              I'm in a box.
+            </div>
+          </div>
+          <!-- -------- PRODUCT 2 END -------- -->
+
+          <!-- -------- PRODUCT 3-------- -->
+          <div id="child-columns" class="column">
+            <div class="box" style="height: 45vh;width: 17vw;">
+              I'm in a box.
+            </div>
+          </div>
+          <!-- -------- PRODUCT 3 END -------- -->
+
+          <!-- -------- PRODUCT 4-------- -->
+          <div id="child-columns" class="column">
+            <div class="box" style="height: 45vh;width: 17vw;">
+              I'm in a box.
+            </div>
+          </div>
+          <!-- -------- PRODUCT 4 END -------- -->
+
+          <!-- -------- PRODUCT 4-------- -->
+          <div id="child-columns" class="column">
+            <div class="box" style="height: 45vh;width: 17vw;">
+              I'm in a box.
+            </div>
+          </div>
+          <!-- -------- PRODUCT 4 END -------- -->
+
+          <!-- -------- PRODUCT 4-------- -->
+          <div id="child-columns" class="column">
+            <div class="box" style="height: 45vh;width: 17vw;">
+              I'm in a box.
+            </div>
+          </div>
+          <!-- -------- PRODUCT 4 END -------- -->
+
+          <!-- -------- PRODUCT 2-------- -->
+          <div id="child-columns" class="column">
+            <div class="box" style="height: 45vh;width: 17vw;">
+              I'm in a box.
+            </div>
+          </div>
+          <!-- -------- PRODUCT 2 END -------- -->
+
+          <!-- -------- PRODUCT 3-------- -->
+          <div id="child-columns" class="column">
+            <div class="box" style="height: 45vh;width: 17vw;">
+              I'm in a box.
+            </div>
+          </div>
+          <!-- -------- PRODUCT 3 END -------- -->
+
+          <!-- -------- PRODUCT 4-------- -->
+          <div id="child-columns" class="column">
+            <div class="box" style="height: 45vh;width: 17vw;">
+              I'm in a box.
+            </div>
+          </div>
+          <!-- -------- PRODUCT 4 END -------- -->
+
+          <!-- -------- PRODUCT 4-------- -->
+          <div id="child-columns" class="column">
+            <div class="box" style="height: 45vh;width: 17vw;">
+              I'm in a box.
+            </div>
+          </div>
+          <!-- -------- PRODUCT 4 END -------- -->
+
+          <!-- -------- PRODUCT 4-------- -->
+          <div id="child-columns" class="column">
+            <div class="box" style="height: 45vh;width: 17vw;">
+              I'm in a box.
+            </div>
+          </div>
+          <!-- -------- PRODUCT 4 END -------- -->
+
+        </div>
+        <!-- END OF PRODUCT DASHBOARD -->
+      </div>
+    </div>
+    <!-- ---------------------------------------------------- ALL DESTINATIONS ---------------------------------------------------- -->
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <style type="text/css">
+      .site-link {
+        padding: 5px 15px;
+        position: fixed;
+        z-index: 99999;
+        background: #fff;
+        box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
+        right: 30px;
+        bottom: 30px;
+        border-radius: 10px;
+      }
+
+      .site-link img {
+        width: 30px;
+        height: 30px;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $(".veen .rgstr-btn button").click(function () {
+          $('.veen .wrapper').addClass('move');
+          $('.body').css('background', '#00E0BB');
+          $('body').css('background', '#EBFFFC');
+          $(".veen .login-btn button").removeClass('active');
+          $(this).addClass('active');
+
+        });
+        $(".veen .login-btn button").click(function () {
+          $('.veen .wrapper').removeClass('move');
+          $('.body').css('background', '#42B3F0');
+          $('body').css('background', '#D9F0FC');
+          $(".veen .rgstr-btn button").removeClass('active');
+          $(this).addClass('active');
+        });
+      });
+    </script>
+</body>
+
+</html>

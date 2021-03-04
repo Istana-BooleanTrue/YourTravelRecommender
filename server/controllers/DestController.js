@@ -1,4 +1,5 @@
 const { Destination, User } = require('../models/index.js');
+const axios = require('axios');
 
 class DestController {
     static showAll = async (req, res, next) => {
@@ -43,6 +44,21 @@ class DestController {
             }
 
             res.status(200).json({ dest });
+        } catch (err) {
+            next(err);
+        }
+    };
+
+    static getWeather = async (req, res, next) => {
+        try {
+            let apiKey = process.env.API_WEATHER;
+            let cityName = 'Jakarta';
+            let response = await axios({
+                method: 'GET',
+                url: `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`,
+            });
+
+            res.status(200).json(response.data);
         } catch (err) {
             next(err);
         }
