@@ -11,5 +11,6 @@ router.post('/register', UserController.register);
 router.use(authenticate);
 
 router.get('/destination', DestController.showAll);
+router.get('/destination/one', DestController.showOne);
 
 module.exports = router;
