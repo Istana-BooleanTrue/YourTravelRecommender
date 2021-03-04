@@ -6,6 +6,7 @@ const DestController = require('../controllers/DestController.js');
 const { authenticate } = require('../middlewares/auth.js');
 
 router.post('/login', UserController.login);
+router.post('/oAuth', UserController.loginGoogle);
 router.post('/register', UserController.register);
 
 router.use(authenticate);

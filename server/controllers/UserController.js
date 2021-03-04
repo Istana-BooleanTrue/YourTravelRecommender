@@ -49,6 +49,35 @@ class UserController {
             next(err);
         }
     };
+
+    static loginGoogle = (req, res, next) => {
+        const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+        async function verify() {
+            const ticket = await client.verifyIdToken({
+                idToken: req.body.token,
+                audience: process.env.GOOGLE_CLIENT_ID,
+            });
+
+            const googleUserParams = ticket.getPayload();
+
+            User.findOrCreate({
+                where: {
+                    email: googleUserParams.email,
+                },
+                defaults: {
+                    name: googleUserParams.name,
+                    password: new Date().toDateString(),
+                },
+            }).then((user) => {
+                let payload = { id: user.id, email: user.email };
+                res.status(200).json({
+                    id: user.id,
+                    email: user.email,
+                    access_token: generateToken(payload),
+                });
+            });
+        }
+    };
 }
 
 module.exports = UserController;
