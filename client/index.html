@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <script src="/js/maps.js"></script>
   <title>Your Travel Recommender</title>
   <style>
     @import "~@creativebulma/bulma-divider";
@@ -246,9 +247,9 @@
         </div>
       </div>
       <div class="column"
-        style="display: flex;flex-direction: column;justify-content: center;align-content: center;align-items: center;padding: 0 5vw;">
-        <div class="box" style="height: 40vh;width: 40vw; margin:0; padding: 0;">
-          Google Maps
+      style="display: flex;flex-direction: column;justify-content: center;align-content: center;align-items: center;padding: 0 5vw;">
+      <div class="box" style="height: 40vh;width: 40vw; margin:0; padding: 0;">
+        <div id="googleMap" style="height: 100%;"></div>
         </div>
       </div>
     </div>
@@ -366,6 +367,11 @@
     </div>
     <!-- ---------------------------------------------------- ALL DESTINATIONS ---------------------------------------------------- -->
 
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAS-gO7yuqmO2x3_KzSqOgR0ND4KtxrpzQ&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
+
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -408,7 +414,7 @@
         });
       });
     </script>
-    <script src="main.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
