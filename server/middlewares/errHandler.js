@@ -1,4 +1,5 @@
 function errHandler(err, req, res, next) {
+    console.log(err);
     if (err.name == `SequelizeValidationError`) {
         let msg = [];
         err.errors.forEach((mes, i) => {
@@ -12,6 +13,10 @@ function errHandler(err, req, res, next) {
         res.status(401).json({ message: `You are not Authorized` });
     } else if (err.status) {
         res.status(err.status).json({ message: err.message });
+    } else if (err.response.status === '401') {
+        res.status(401).json({ message: `Request failed with status code 401"` });
+    } else if (err.response.status === '404') {
+        res.status(404).json({ message: `City not Found` });
     } else {
         res.status(500).json({ message: err });
     }

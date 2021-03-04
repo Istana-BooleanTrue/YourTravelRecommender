@@ -235,30 +235,20 @@ Request =
 
 -   body =
 
-    {
-    "title": "<todos title>",
-    "description": "<todos description>",
-    "status": "<todos status>",
-    "due_date": "<todos due_date>"
-    }
+    not needed
 
 Response (200 - OK) =
 
 {
-"weather": [
-{
 "id": "<id>",
-"main": "<status weather>",
-"description": "<weather description>",
-"icon": "<imgid>"
-}
-],
-"base": "stations",
-"main": {
+"name": "<name>",
 "temp": "<temp>",
-"pressure": "<pressure>",
-},
-"name": "<location name>"
+"mainWeather": "<status weather>",
+"description": "<weather description>",
+"mainHumidity": "<main Humidity>",
+"feelsLike": "<feels like>",
+"windSpeed": "<wind speed>",
+"icon": "<imgid>"
 }
 
 Response (401 - Not Authorized) =
