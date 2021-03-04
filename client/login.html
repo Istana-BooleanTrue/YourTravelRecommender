@@ -36,6 +36,15 @@
         <div class="box" style="width: 43vw; height: 80vh; margin-left: 20vw; overflow: clip; padding: 0">
           <figure>
             <img src="./assets/plane.jpg" style='overflow: hidden; opacity: 0.5'>
+            <div class="box" style="position: absolute; top: 55%; left: 26%; transform: translate(-50%, -50%); max-width: 20vw; display: flex; flex-direction: column; justify-content: center; align-content: center; align-items: center;">
+              <span style="font-size: 120px;display: flex;align-content: center;justify-content: center; text-align: center;">
+                🛫
+              </span>
+              <strong style="font-size: 21px;">Welcome to YTR!</strong>
+              <p style="text-align: center;">
+                This website helps you by giving you recommendation of places you can visit in Indonesia! Enjoy your trip!
+              </p>
+            </div>
           </figure>
         </div>
       </div>
@@ -55,6 +64,7 @@
               </div>
               <div class="wrapper">
                 <form id="login" tabindex="500">
+                  <h3 style="font-size: 60px;display: flex;align-content: center;justify-content: center; text-align: center;">🤗</h3>
                   <h3>Login</h3>
                   <div class="mail">
                     <input type="mail" name="">
@@ -69,6 +79,7 @@
                   </div>
                 </form>
                 <form id="register" tabindex="502">
+                  <h3 style="font-size: 60px;display: flex;align-content: center;justify-content: center; text-align: center;">🥳</h3>
                   <h3>Register</h3>
                   <div class="mail">
                     <input type="mail" name="">
@@ -113,7 +124,7 @@
         $(".veen .rgstr-btn button").click(function () {
           $('.veen .wrapper').addClass('move');
           $('.body').css('background', '#00E0BB');
-          $('body').css('background', '#C2FFF5');
+          $('body').css('background', '#EBFFFC');
           $(".veen .login-btn button").removeClass('active');
           $(this).addClass('active');
 
