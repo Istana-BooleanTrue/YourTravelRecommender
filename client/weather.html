@@ -19,6 +19,9 @@
     crossorigin="anonymous">
     </script>
     <script>
+    let baseURL = 'http://localhost:3000'
+
+
     function weatherApi() {
     $.ajax({
         method: 'GET',
@@ -59,13 +62,7 @@
 
                         </div>
                     </div>
-                    
-                    <div class="d-flex h-25 text-center pad-top" id="head-weather">
-                        <div class="col">
-                            <h1>Hello <span id="email-name"> ${localStorage.email.split('@')[0]} </span></h2>
-                            <h3>Todays Weather Forecast</h5>
-                        </div>
-                    </div>
+                
 
                 </div>
             </div>

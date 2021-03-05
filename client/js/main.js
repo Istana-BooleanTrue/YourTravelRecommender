@@ -5,7 +5,6 @@ $(document).ready( () => {
 
   $("#login-form").on("submit", (e) => {
     e.preventDefault();
-
     login()
   })
 
@@ -28,11 +27,13 @@ function view() {
     $('#navbar').hide()
     $('#home-page').hide()
     $('#all-destination').hide()
+    weatherApi()
   } else {
     $('#login-page').hide()
     $('#navbar').show()
     $('#home-page').show()
     $('#all-destination').show()
+    weatherApi()
   }
 }
 
@@ -115,7 +116,6 @@ function weatherApi() {
       method: 'GET',
       url: baseURL + "weather",
       headers: {
-          email,
           access_token : localStorage.access_token
       }
   })
@@ -150,14 +150,6 @@ function weatherApi() {
 
                       </div>
                   </div>
-                  
-                  <div class="d-flex h-25 text-center pad-top" id="head-weather">
-                      <div class="col">
-                          <h1>Hello <span id="email-name"> ${localStorage.email.split('@')[0]} </span></h2>
-                          <h3>Todays Weather Forecast</h5>
-                      </div>
-                  </div>
-
               </div>
           </div>
 
