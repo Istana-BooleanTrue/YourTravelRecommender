@@ -3,6 +3,11 @@ let baseURL = 'http://localhost:3000/';
 $(document).ready(() => {
     view();
 
+    $('#home-btn').on('click', (e) => {
+        e.preventDefault();
+        view();
+    });
+
     $('#login').on('submit', (e) => {
         e.preventDefault();
 
@@ -20,6 +25,13 @@ $(document).ready(() => {
 
         logout();
     });
+
+    $('#all-btn').on('click', (e) => {
+        e.preventDefault();
+        $('#home-page').hide();
+        $('#all-destination').show();
+        showAll();
+    });
 });
 
 function view() {
@@ -32,7 +44,10 @@ function view() {
         $('#login-page').hide();
         $('#navbar').show();
         $('#home-page').show();
-        $('#all-destination').show();
+        $('#all-destination').hide();
+        findOne();
+        weatherApi();
+        quotesApi();
     }
 }
 
@@ -82,6 +97,65 @@ function logout() {
     view();
 }
 
+function findOne() {
+    $.ajax({
+        url: baseURL + 'destination/one',
+        method: 'GET',
+        headers: {
+            access_token: localStorage.access_token,
+        },
+    })
+        .done((response) => {
+            console.log(response);
+            $('#img-one').empty();
+            $('#img-one').append(
+                `
+            <img src="${response.dest.imgURL}" style='overflow: hidden;'>
+            `
+            );
+            $('#title-one').empty();
+            $('#title-one').append(
+                `
+                <p style="text-align: center;">
+                <strong style="font-size: 21px;"> ${response.dest.title} </strong> </p>
+                <p style="text-align: center;"> ${response.dest.description} </p>
+                `
+            );
+        })
+        .fail((xhr, test) => {
+            console.log({ xhr, test });
+        });
+}
+
+function showAll() {
+    $.ajax({
+        url: baseURL + 'destination',
+        method: 'GET',
+        headers: {
+            access_token: localStorage.access_token,
+        },
+    })
+        .done((response) => {
+            $('#main-columns').empty();
+            response.dest.forEach((el, i) => {
+                $('#main-columns').append(
+                    `
+            <div id="child-columns" class="column">
+            <div class="box" style="height: 45vh;width: 17vw;">
+              <img src="${el.imgURL}" style='overflow: hidden;'>
+              <p style="text-align: center;">
+                  <strong style="font-size: 21px;"> ${el.title} </strong> </p>
+            </div>
+          </div>
+            `
+                );
+            });
+        })
+        .fail((xhr, test) => {
+            console.log({ xhr, test });
+        });
+}
+
 // ------------------------------------------------------------- G Maps -----------------------------------------------------//
 
 let map;
@@ -111,20 +185,15 @@ function weatherApi() {
         method: 'GET',
         url: baseURL + 'weather',
         headers: {
-            email,
             access_token: localStorage.access_token,
         },
     })
+
         .done((data) => {
             $('#weather-page').empty();
             $('#weather-page').append(
                 `
-      
-      <div class="container-fluid">
-          <div class="row justify-content-center marginfix-weather marginfix-top">
-              <div class="col-12 col-md-4 col-sm-12 col-xs-12">
-                  <div class="card p-4">
-
+                <div class=">
                       <div class="d-flex">
                           <h6 class="flex-grow-1">${data.name}</h6>
                           <h6>${new Date().getHours()}:${
@@ -132,15 +201,13 @@ function weatherApi() {
                 }</h6>
                       </div>
 
-                      <div class="d-flex flex-column temp mt-5 mb-3">
-                          <h1 class="mb-0 font-weight-bold" id="heading"> ${
-                              data.main.temp
-                          } ℃ </h1> <span class="small grey">${data.weather[0].main}</span>
+                      <div class="">
+                          <h1> ${data.main.temp} ℃ </h1> <span class="small grey">${data.weather[0].main}</span>
                       </div>
 
                       <div class="d-flex">
                           <div class="temp-details flex-grow-1">
-                              <p class="my-1"> <img src="https://i.imgur.com/B9kqOzp.png" height="17px"> <span> ${
+                              <p class="my-1"> <img src="https://i.imgur.com/B9kqOzp.png" style="height:45px;"> <span> ${
                                   data.wind.speed
                               } mp/h </span> </p>
                               <p class="my-1"><span> ${data.main.humidity}% humidity </span> </p>
@@ -151,20 +218,7 @@ function weatherApi() {
                               data.weather[0].icon
                           }.png" alt="wheater-logo" width="100px"> </div>
                           </div>
-
-                      </div>
-                  </div>
-                  
-                  <div class="d-flex h-25 text-center pad-top" id="head-weather">
-                      <div class="col">
-                          <h1>Hello <span id="email-name"> ${localStorage.email.split('@')[0]} </span></h2>
-                          <h3>Todays Weather Forecast</h5>
-                      </div>
-                  </div>
-
-              </div>
-          </div>
-
+                        </div>
       `
             );
         })
@@ -174,3 +228,25 @@ function weatherApi() {
 }
 
 // ------------------------------------------------------------- Weather -----------------------------------------------------//
+
+function quotesApi() {
+    $.ajax({
+        method: 'GET',
+        url: baseURL + 'quotes',
+        headers: {
+            access_token: localStorage.access_token,
+        },
+    })
+
+        .done((data) => {
+            $('#quotes-page').empty();
+            $('#quotes-page').append(
+                `
+                <div>${data[0].content.rendered}</div>
+      `
+            );
+        })
+        .fail((err) => {
+            console.log(err);
+        });
+}

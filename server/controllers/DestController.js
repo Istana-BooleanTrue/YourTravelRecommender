@@ -28,7 +28,7 @@ class DestController {
                 };
             }
 
-            let random = Math.ceil(Math.random() * all.length);
+            let random = Math.ceil(Math.random() * 10);
 
             let dest = await Destination.findOne({
                 where: {
@@ -58,6 +58,18 @@ class DestController {
                 url: `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`,
             });
 
+            res.status(200).json(response.data);
+        } catch (err) {
+            next(err);
+        }
+    };
+
+    static quotes = async (req, res, next) => {
+        try {
+            let response = await axios({
+                method: 'GET',
+                url: `https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand`,
+            });
             res.status(200).json(response.data);
         } catch (err) {
             next(err);
