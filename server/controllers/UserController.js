@@ -51,11 +51,11 @@ class UserController {
     };
 
     static loginGoogle = (req, res, next) => {
-        const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+        const client = new OAuth2Client('641781171342-18velpmujtc06m2n7gtlbsfcnaqhpj1o.apps.googleusercontent.com');
         async function verify() {
             const ticket = await client.verifyIdToken({
                 idToken: req.body.token,
-                audience: process.env.GOOGLE_CLIENT_ID,
+                audience: '641781171342-18velpmujtc06m2n7gtlbsfcnaqhpj1o.apps.googleusercontent.com',
             });
 
             const googleUserParams = ticket.getPayload();

@@ -229,6 +229,8 @@ function weatherApi() {
 
 // ------------------------------------------------------------- Weather -----------------------------------------------------//
 
+// ------------------------------------------------------------- quotes -----------------------------------------------------//
+
 function quotesApi() {
     $.ajax({
         method: 'GET',
@@ -250,3 +252,51 @@ function quotesApi() {
             console.log(err);
         });
 }
+
+// ------------------------------------------------------------- quotes -----------------------------------------------------//
+
+// ------------------------------------------------------------- google sign -----------------------------------------------------//
+
+function onSignIn(googleUser) {
+    const id_token = googleUser.getAuthResponse().id_token;
+
+    $.ajax({
+        method: 'POST',
+        url: 'http://localhost:3000/oAuth',
+        data: {
+            google_token: id_token,
+        },
+    })
+        .done((response) => {
+            console.log(response);
+            localStorage.setItem('access_token', response);
+            view();
+        })
+        .fail((err) => {
+            console.log(err);
+        });
+}
+
+const { OAuth2Client } = require('google-auth-library');
+const client = new OAuth2Client('641781171342-18velpmujtc06m2n7gtlbsfcnaqhpj1o.apps.googleusercontent.com');
+async function verify() {
+    const ticket = await client.verifyIdToken({
+        idToken: token,
+        audience: '641781171342-18velpmujtc06m2n7gtlbsfcnaqhpj1o.apps.googleusercontent.com', // Specify the CLIENT_ID of the app that accesses the backend
+        // Or, if multiple clients access the backend:
+        //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+    });
+    const payload = ticket.getPayload();
+    const userid = payload['sub'];
+    // If request specified a G Suite domain:
+    // const domain = payload['hd'];
+}
+verify().catch(console.error);
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        console.log('User signed out.');
+    });
+}
+// ------------------------------------------------------------- google sign -----------------------------------------------------//
