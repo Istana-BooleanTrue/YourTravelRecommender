@@ -1,17 +1,15 @@
-let baseURL = '';
+let baseURL = 'http://localhost:3000/';
 
-$(document).ready(function () {
-    e.preventDefault();
-
+$(document).ready(() => {
     view();
 
-    $('#login-form').on('submit', (e) => {
+    $('#login').on('submit', (e) => {
         e.preventDefault();
 
         login();
     });
 
-    $('#register-form').on('submit', (e) => {
+    $('#register').on('submit', (e) => {
         e.preventDefault();
 
         register();
@@ -48,13 +46,15 @@ function login() {
             email,
             password,
         },
-    }).done(({ access_token }) => {
-        localStorage.setItem('access_token', access_token);
-        view();
-    });
-    fail((xhr, test) => {
-        console.log({ xhr, test });
-    }).always(() => $('#login-form').trigger('reset'));
+    })
+        .done(({ access_token }) => {
+            localStorage.setItem('access_token', access_token);
+            view();
+        })
+        .fail((xhr, test) => {
+            console.log({ xhr, test });
+        })
+        .always(() => $('#login-form').trigger('reset'));
 }
 
 function register() {
@@ -67,13 +67,14 @@ function register() {
             email,
             password,
         },
-    }).done(({ access_token }) => {
-        localStorage.setItem('access_token', access_token);
-        view();
-    });
-    fail((xhr, test) => {
-        console.log({ xhr, test });
-    }).always(() => $('#register-form').trigger('reset'));
+    })
+        .done(() => {
+            view();
+        })
+        .fail((xhr, test) => {
+            console.log({ xhr, test });
+        })
+        .always(() => $('#register-form').trigger('reset'));
 }
 
 function logout() {
