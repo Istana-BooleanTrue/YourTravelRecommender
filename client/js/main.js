@@ -16,7 +16,6 @@ $(document).ready(() => {
 
     $('#register').on('submit', (e) => {
         e.preventDefault();
-
         register();
     });
 
