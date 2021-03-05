@@ -8,7 +8,8 @@ const { authenticate } = require('../middlewares/auth.js');
 router.post('/login', UserController.login);
 router.post('/oAuth', UserController.loginGoogle);
 router.post('/register', UserController.register);
-router.get('/weather', DestController.getWeather)
+router.get('/weather', DestController.getWeather);
+router.get('/quotes', DestController.quotes);
 
 router.use(authenticate);
 
