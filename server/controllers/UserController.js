@@ -4,6 +4,8 @@ const { comparePassword } = require('../helpers/bcrypt.js');
 
 const { generateToken } = require('../helpers/jwt.js');
 
+const { OAuth2Client } = require('google-auth-library');
+
 class UserController {
     static register = async (req, res, next) => {
         try {
@@ -54,7 +56,7 @@ class UserController {
         const client = new OAuth2Client('641781171342-18velpmujtc06m2n7gtlbsfcnaqhpj1o.apps.googleusercontent.com');
         async function verify() {
             const ticket = await client.verifyIdToken({
-                idToken: req.body.token,
+                idToken: req.body.google_token,
                 audience: '641781171342-18velpmujtc06m2n7gtlbsfcnaqhpj1o.apps.googleusercontent.com',
             });
 
@@ -65,18 +67,23 @@ class UserController {
                     email: googleUserParams.email,
                 },
                 defaults: {
-                    name: googleUserParams.name,
+                    email: googleUserParams.email,
                     password: new Date().toDateString(),
                 },
-            }).then((user) => {
-                let payload = { id: user.id, email: user.email };
-                res.status(200).json({
-                    id: user.id,
-                    email: user.email,
-                    access_token: generateToken(payload),
+            })
+                .then((user) => {
+                    let payload = { id: user[0].id, email: user[0].email };
+                    res.status(200).json({
+                        id: user[0].id,
+                        email: user[0].email,
+                        access_token: generateToken(payload.id, payload.email),
+                    });
+                })
+                .catch((err) => {
+                    next(err);
                 });
-            });
         }
+        verify();
     };
 }
 

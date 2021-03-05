@@ -16,6 +16,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <title>Your Travel Recommender</title>
+
   <style>
     .site-link {
       padding: 5px 15px;
@@ -150,7 +151,7 @@
                     <label>Password</label>
                   </div>
                   <div class="submit">
-                    <button type="submit" class="dark">Register</button>
+                    <button id="regis-btn" type="submit" class="dark">Register</button>
                   </div>
                 </form>
                 <!-- ------------------- FORM REGISTER ------------------- -->
@@ -271,7 +272,7 @@
   <!-- ---------------------------------------------------- ALL DESTINATIONS ---------------------------------------------------- -->
 
   <div id="all-destination">
-    <!-- PRODUCT DASHBOARD -->
+    <!-- DESTINATION DASHBOARD -->
     <div class="column is-main-content">
       <div class="container is-fluid block">
         <section class="section" style="text-align: center;">
@@ -279,102 +280,13 @@
       </div>
 
 
-      <!-- -------- PRODUCT CARDS -------- -->
+      <!-- -------- DESTINATION CARDS -------- -->
       <div class="container is-widescreen">
-        <!-- -------- PRODUCT CARDS -------- -->
+        <!-- -------- DESTINATION CARDS -------- -->
         <div id="main-columns" class="columns is-multiline">
 
-          <!-- -------- PRODUCT 1-------- -->
-          <div id="child-columns" class="column">
-            <div class="box" style="height: 45vh;width: 17vw;">
-              I'm in a box.
-            </div>
-          </div>
-          <!-- -------- PRODUCT 1 END -------- -->
-
-
-          <!-- -------- PRODUCT 2-------- -->
-          <div id="child-columns" class="column">
-            <div class="box" style="height: 45vh;width: 17vw;">
-              I'm in a box.
-            </div>
-          </div>
-          <!-- -------- PRODUCT 2 END -------- -->
-
-          <!-- -------- PRODUCT 3-------- -->
-          <div id="child-columns" class="column">
-            <div class="box" style="height: 45vh;width: 17vw;">
-              I'm in a box.
-            </div>
-          </div>
-          <!-- -------- PRODUCT 3 END -------- -->
-
-          <!-- -------- PRODUCT 4-------- -->
-          <div id="child-columns" class="column">
-            <div class="box" style="height: 45vh;width: 17vw;">
-              I'm in a box.
-            </div>
-          </div>
-          <!-- -------- PRODUCT 4 END -------- -->
-
-          <!-- -------- PRODUCT 4-------- -->
-          <div id="child-columns" class="column">
-            <div class="box" style="height: 45vh;width: 17vw;">
-              I'm in a box.
-            </div>
-          </div>
-          <!-- -------- PRODUCT 4 END -------- -->
-
-          <!-- -------- PRODUCT 4-------- -->
-          <div id="child-columns" class="column">
-            <div class="box" style="height: 45vh;width: 17vw;">
-              I'm in a box.
-            </div>
-          </div>
-          <!-- -------- PRODUCT 4 END -------- -->
-
-          <!-- -------- PRODUCT 2-------- -->
-          <div id="child-columns" class="column">
-            <div class="box" style="height: 45vh;width: 17vw;">
-              I'm in a box.
-            </div>
-          </div>
-          <!-- -------- PRODUCT 2 END -------- -->
-
-          <!-- -------- PRODUCT 3-------- -->
-          <div id="child-columns" class="column">
-            <div class="box" style="height: 45vh;width: 17vw;">
-              I'm in a box.
-            </div>
-          </div>
-          <!-- -------- PRODUCT 3 END -------- -->
-
-          <!-- -------- PRODUCT 4-------- -->
-          <div id="child-columns" class="column">
-            <div class="box" style="height: 45vh;width: 17vw;">
-              I'm in a box.
-            </div>
-          </div>
-          <!-- -------- PRODUCT 4 END -------- -->
-
-          <!-- -------- PRODUCT 4-------- -->
-          <div id="child-columns" class="column">
-            <div class="box" style="height: 45vh;width: 17vw;">
-              I'm in a box.
-            </div>
-          </div>
-          <!-- -------- PRODUCT 4 END -------- -->
-
-          <!-- -------- PRODUCT 4-------- -->
-          <div id="child-columns" class="column">
-            <div class="box" style="height: 45vh;width: 17vw;">
-              I'm in a box.
-            </div>
-          </div>
-          <!-- -------- PRODUCT 4 END -------- -->
-
         </div>
-        <!-- END OF PRODUCT DASHBOARD -->
+        <!-- END OF DESTINATION DASHBOARD -->
       </div>
     </div>
     <!-- ---------------------------------------------------- ALL DESTINATIONS ---------------------------------------------------- -->
@@ -389,23 +301,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <style type="text/css">
-      .site-link {
-        padding: 5px 15px;
-        position: fixed;
-        z-index: 99999;
-        background: #fff;
-        box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
-        right: 30px;
-        bottom: 30px;
-        border-radius: 10px;
-      }
 
-      .site-link img {
-        width: 30px;
-        height: 30px;
-      }
-    </style>
     <script>
       $(document).ready(function () {
         $(".veen .rgstr-btn button").click(function () {
@@ -423,9 +319,11 @@
           $(".veen .rgstr-btn button").removeClass('active');
           $(this).addClass('active');
         });
+
       });
     </script>
     <script src="./js/main.js"></script>
+
 </body>
 
 </html>

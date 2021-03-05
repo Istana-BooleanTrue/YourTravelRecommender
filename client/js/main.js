@@ -2,6 +2,7 @@ let baseURL = 'http://localhost:3000/';
 
 $(document).ready(() => {
     view();
+    initMap();
 
     $('#home-btn').on('click', (e) => {
         e.preventDefault();
@@ -50,6 +51,28 @@ function view() {
     }
 }
 
+// ------------------------------------------------------------- G Maps -----------------------------------------------------//
+
+let map;
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById('googleMap'), {
+        center: new google.maps.LatLng(-6.1753924, 106.8249641),
+        zoom: 13,
+    });
+
+    let latLng = new google.maps.LatLng(-6.1753924, 106.8249641);
+    new google.maps.Marker({
+        position: latLng,
+        map: map,
+    });
+
+    const trafficLayer = new google.maps.TrafficLayer();
+    trafficLayer.setMap(map);
+}
+
+// ------------------------------------------------------------- G Maps -----------------------------------------------------//
+
 function login() {
     let email = $('#login-email').val();
     let password = $('#login-password').val();
@@ -88,12 +111,16 @@ function register() {
         .fail((xhr, test) => {
             console.log({ xhr, test });
         })
-        .always(() => $('#register-form').trigger('reset'));
+        .always(() => {
+            $('#regis-email').val('');
+            $('#regis-password').val('');
+        });
 }
 
 function logout() {
     localStorage.removeItem('access_token');
     view();
+    signOut();
 }
 
 function findOne() {
@@ -154,28 +181,6 @@ function showAll() {
             console.log({ xhr, test });
         });
 }
-
-// ------------------------------------------------------------- G Maps -----------------------------------------------------//
-
-let map;
-
-function initMap() {
-    map = new google.maps.Map(document.getElementById('googleMap'), {
-        center: new google.maps.LatLng(-6.1753924, 106.8249641),
-        zoom: 13,
-    });
-
-    let latLng = new google.maps.LatLng(-6.1753924, 106.8249641);
-    new google.maps.Marker({
-        position: latLng,
-        map: map,
-    });
-
-    const trafficLayer = new google.maps.TrafficLayer();
-    trafficLayer.setMap(map);
-}
-
-// ------------------------------------------------------------- G Maps -----------------------------------------------------//
 
 // ------------------------------------------------------------- Weather -----------------------------------------------------//
 
@@ -258,7 +263,6 @@ function quotesApi() {
 
 function onSignIn(googleUser) {
     const id_token = googleUser.getAuthResponse().id_token;
-
     $.ajax({
         method: 'POST',
         url: 'http://localhost:3000/oAuth',
@@ -267,30 +271,13 @@ function onSignIn(googleUser) {
         },
     })
         .done((response) => {
-            console.log(response);
-            localStorage.setItem('access_token', response);
+            localStorage.setItem('access_token', response.access_token);
             view();
         })
         .fail((err) => {
             console.log(err);
         });
 }
-
-const { OAuth2Client } = require('google-auth-library');
-const client = new OAuth2Client('641781171342-18velpmujtc06m2n7gtlbsfcnaqhpj1o.apps.googleusercontent.com');
-async function verify() {
-    const ticket = await client.verifyIdToken({
-        idToken: token,
-        audience: '641781171342-18velpmujtc06m2n7gtlbsfcnaqhpj1o.apps.googleusercontent.com', // Specify the CLIENT_ID of the app that accesses the backend
-        // Or, if multiple clients access the backend:
-        //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
-    });
-    const payload = ticket.getPayload();
-    const userid = payload['sub'];
-    // If request specified a G Suite domain:
-    // const domain = payload['hd'];
-}
-verify().catch(console.error);
 
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
